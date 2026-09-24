@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prabhjot Singh</title>
+<meta name="description" content="Prabhjot Singh: MSc Computer Science (Applied AI) student at the University of Ottawa. LLM and RAG projects, and a published paper on reducing hallucinations in RAG.">
+<meta property="og:title" content="Prabhjot Singh">
+<meta property="og:description" content="MSc CS (Applied AI) at uOttawa. LLM and RAG projects, published research on hallucination reduction.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='28' fill='white'%3EPS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f7f9;
+    --border: #e4e7ec;
+    --text: #111827;
+    --muted: #5b6474;
+    --accent: #2563eb;
+    --accent-soft: #e8efff;
+    --on-accent: #ffffff;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #262d38;
+      --text: #e6e8eb;
+      --muted: #9aa3af;
+      --accent: #6ea0ff;
+      --accent-soft: #16233d;
+      --on-accent: #0d1117;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #262d38;
+    --text: #e6e8eb;
+    --muted: #9aa3af;
+    --accent: #6ea0ff;
+    --accent-soft: #16233d;
+      --on-accent: #0d1117;
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
+  .brand { font-weight: 700; color: var(--text); }
+  .navlinks { display: flex; gap: 18px; align-items: center; font-size: 14px; }
+  .navlinks a { color: var(--muted); }
+  .navlinks a:hover { color: var(--text); text-decoration: none; }
+  .theme-btn {
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    border-radius: 8px; width: 34px; height: 34px; cursor: pointer; font-size: 15px;
+  }
+  @media (max-width: 640px) { .navlinks a.hide-sm { display: none; } }
+
+  /* Hero */
+  header.hero { padding: 72px 0 48px; }
+  .hero h1 { font-size: clamp(34px, 6vw, 48px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .hero .role { font-size: 18px; color: var(--muted); margin: 0 0 20px; }
+  .hero p.intro { max-width: 640px; margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 500;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  }
+  .btn:hover { text-decoration: none; border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* Sections */
+  section { padding: 40px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 20px; font-weight: 600; }
+  h3 { font-size: 18px; margin: 0 0 4px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+
+  /* Paper */
+  .paper { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; box-shadow: var(--shadow); }
+  .paper .venue { font-size: 14px; color: var(--muted); margin: 6px 0 14px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+  .stat { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .stat b { display: block; font-size: 24px; letter-spacing: -0.01em; }
+  .stat span { font-size: 13px; color: var(--muted); }
+  @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
+
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    border: 1px solid var(--border); border-radius: 12px; padding: 20px; background: var(--bg);
+    display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card p { margin: 0; font-size: 15px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .tag { font-size: 12px; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+  .card .links { font-size: 14px; display: flex; gap: 14px; }
+  .label { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+  /* Timeline */
+  .item { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 0 0 22px; }
+  .item:last-child { padding-bottom: 0; }
+  .item .when { color: var(--muted); font-size: 14px; white-space: nowrap; }
+  .item ul { grid-column: 1 / -1; margin: 6px 0 0; padding-left: 18px; }
+  .item li { margin: 2px 0; }
+  @media (max-width: 560px) { .item { grid-template-columns: 1fr; } }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: 160px 1fr; gap: 10px 16px; }
+  .skills dt { font-weight: 600; font-size: 15px; }
+  .skills dd { margin: 0; color: var(--muted); }
+  @media (max-width: 560px) { .skills { grid-template-columns: 1fr; } .skills dd { margin-bottom: 8px; } }
+
+  footer { border-top: 1px solid var(--border); padding: 40px 0 56px; }
+  footer .btns { margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Prabhjot Singh</a>
+    <div class="navlinks">
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a class="hide-sm" href="#experience">Experience</a>
+      <a class="hide-sm" href="#contact">Contact</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">&#9680;</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+  <header class="hero">
+    <h1>Prabhjot Singh</h1>
+    <p class="role">MSc Computer Science (Applied AI) &middot; University of Ottawa</p>
+    <p class="intro">I build LLM and RAG systems and care a lot about whether their answers are actually true. My research on checking RAG answers claim by claim was published in 2026. I'm looking for AI/ML co-op and internship roles.</p>
+    <div class="btns">
+      <a class="btn primary" href="Prabhjot_Singh_Resume.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm-1 7V3.5L18.5 9zM8 13h8v2H8zm0 4h8v2H8z"/></svg>
+        Resume
+      </a>
+      <a class="btn" href="https://github.com/DarkMatter1217" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.3 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/prabhjot-singh-56810a270" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3zM6.5 7.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6v5h-3V9h2.9v1.4c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="mailto:prabhjot96439@gmail.com">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>
+        Email
+      </a>
+    </div>
+  </header>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div class="paper">
+      <h3>A Claim-Centric Multi-Source Verification Architecture for Reducing Hallucinations in Retrieval-Augmented Generation</h3>
+      <div class="venue">Singh, P. &middot; <i>Amity Journal of Computational Sciences</i>, Vol. 10, Issue 1, 2026</div>
+      <p>RAG systems usually trust whatever they retrieve. My system, ARA, breaks an answer into separate claims and checks each one against independent evidence from the web. If it can't find support for a claim, it says so instead of guessing.</p>
+      <div class="stats">
+        <div class="stat"><b>~80%</b><span>fewer false "supported" labels than a standard RAG setup</span></div>
+        <div class="stat"><b>496</b><span>hand-labeled claims from scientific papers</span></div>
+        <div class="stat"><b>289 &rarr; 56</b><span>unsupported claims wrongly marked as supported</span></div>
+      </div>
+      <div class="btns">
+        <a class="btn primary" href="https://img.amizone.net/AzureFileHandler.ashx?FileName=amitywebsite/userfiles/aijem/a30ec572.pdf" target="_blank" rel="noopener">Read the paper</a>
+        <a class="btn" href="https://github.com/DarkMatter1217/ARA" target="_blank" rel="noopener">Code on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="label">Code for my paper</span>
+        <h3>ARA: Claim-Level Verification for RAG</h3>
+        <p>A LangGraph pipeline that splits an LLM answer into claims, searches the web for evidence on each one, and labels it SUPPORTED, INSUFFICIENT or CONTRADICTED. Comes with a Chainlit chat UI.</p>
+        <div class="tags"><span class="tag">LangGraph</span><span class="tag">FAISS</span><span class="tag">bge-m3</span><span class="tag">Exa</span><span class="tag">Chainlit</span></div>
+        <div class="links"><a href="https://github.com/DarkMatter1217/ARA" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+      <article class="card">
+        <span class="label">Team project &middot; I built the backend</span>
+        <h3>MeowTutor AI</h3>
+        <p>An AI tutor that reads your notes and quizzes you on them. I built the backend: Tesseract OCR for notes, LangChain multi-query search over Pinecone, and LLM-generated MCQs. Piloted with 100 university students.</p>
+        <div class="tags"><span class="tag">LangChain</span><span class="tag">Pinecone</span><span class="tag">Tesseract OCR</span></div>
+        <div class="links"><a href="https://github.com/MeowderMon/MeowTutor.ai" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+      <article class="card">
+        <span class="label">Adobe India Hackathon 2025 &middot; Round 1A</span>
+        <h3>PDF Outline Extractor</h3>
+        <p>Pulls the title and H1, H2, H3 headings out of any PDF using font sizes in PyMuPDF, and saves the outline as JSON. Runs in Docker.</p>
+        <div class="tags"><span class="tag">PyMuPDF</span><span class="tag">Docker</span></div>
+        <div class="links"><a href="https://github.com/DarkMatter1217/Adobe_1A" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+      <article class="card">
+        <span class="label">Adobe India Hackathon 2025 &middot; Round 1B</span>
+        <h3>Persona-Based Document Analyzer</h3>
+        <p>An offline app that finds and summarizes the PDF sections most relevant to a user's role and task, using bge-small embeddings in FAISS and a small TinyLlama model. Runs fully offline in Docker.</p>
+        <div class="tags"><span class="tag">FAISS</span><span class="tag">TinyLlama</span><span class="tag">LangChain</span><span class="tag">Docker</span></div>
+        <div class="links"><a href="https://github.com/DarkMatter1217/Adobe_1B" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+    </div>
+    <p class="small muted" style="margin-top:18px">More on <a href="https://github.com/DarkMatter1217" target="_blank" rel="noopener">my GitHub</a>.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="item">
+      <div><h3>AI Intern</h3><div class="muted">Infosys Springboard &middot; Virtual Internship Program &middot; Remote</div></div>
+      <div class="when">Nov 2025 - Jan 2026</div>
+      <ul>
+        <li>Built an LLM-based legal advice assistant on web-scraped legal sources that I cleaned and organized for retrieval.</li>
+        <li>Scored sources for reliability (government 1.0, established outlets 0.5, blogs and forums 0.2, unknown 0) to favor trusted ones.</li>
+        <li>Improved answer accuracy by about 23% by refining prompts and retrieval.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div><h3>AI and Prompt Engineering Intern</h3><div class="muted">VaultOfCodes &middot; Remote</div></div>
+      <div class="when">Jul 2025 - Aug 2025</div>
+      <ul>
+        <li>Built FastAPI endpoints and added sentence-transformer embeddings for semantic search in LLM-based features.</li>
+        <li>Wrote a Python pipeline that extracts and processes text from PDF documents automatically.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div><h3>Data Science Intern</h3><div class="muted">AltQube &middot; Bengaluru, India</div></div>
+      <div class="when">Jun 2025 - Aug 2025</div>
+      <ul>
+        <li>Built customer segmentation models with K-Means and DBSCAN on customer portfolio data.</li>
+        <li>Improved cluster quality by about 12% (Silhouette Score) by switching from K-Means to DBSCAN.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="item">
+      <div><h3>University of Ottawa</h3><div class="muted">Master of Computer Science, Applied AI concentration</div></div>
+      <div class="when">Sep 2026 - May 2028</div>
+    </div>
+    <div class="item">
+      <div><h3>Delhi Technological University</h3><div class="muted">BTech, Computer Software Engineering &middot; CGPA 8.1/10</div></div>
+      <div class="when">Jun 2022 - May 2026</div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt><dd>Python, C++, C</dd>
+      <dt>ML and LLMs</dt><dd>PyTorch, Hugging Face Transformers, scikit-learn, LangChain, LangGraph, sentence-transformers, FAISS, Pinecone</dd>
+      <dt>Data</dt><dd>pandas, NumPy, SciPy, Matplotlib, seaborn, Tesseract OCR</dd>
+      <dt>Backend and tools</dt><dd>FastAPI, Flask, SQLAlchemy, MySQL, SQLite, Docker, Git, Jupyter</dd>
+    </dl>
+  </section>
+
+  <section id="more">
+    <h2>Certifications and achievements</h2>
+    <ul style="margin:0;padding-left:18px">
+      <li>Oracle Cloud Infrastructure 2025 Certified: Generative AI Professional, Data Science Professional, AI Foundations Associate</li>
+      <li>Google Cloud Gen AI Academy 2.0 (AI/ML Track)</li>
+      <li>Amazon ML Summer School</li>
+      <li>97.85 percentile in the Naukri Campus Young Turks 2025 national skill contest</li>
+      <li>Top 75 coders, Amazon Hackathon</li>
+      <li>Volunteer mentor, Desh Ke Mentor program, Government of NCT of Delhi (Jan 2023 - Apr 2023)</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p style="margin:0">Based in Ottawa. The best way to reach me is email: <a href="mailto:prabhjot96439@gmail.com">prabhjot96439@gmail.com</a></p>
+    <div class="btns">
+      <a class="btn" href="https://www.linkedin.com/in/prabhjot-singh-56810a270" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/DarkMatter1217" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="Prabhjot_Singh_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById("themeBtn");
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved) root.setAttribute("data-theme", saved);
+    } catch (e) {}
+    btn.addEventListener("click", function () {
+      var current = root.getAttribute("data-theme");
+      if (!current) {
+        current = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      var next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
